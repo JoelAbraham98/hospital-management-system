@@ -1,0 +1,51 @@
+{% extends 'app1/base.html' %}
+{% load static %}
+
+  {% block content %}
+    <!-- end header section -->
+  </div>
+
+
+  <!-- about section -->
+
+  <section class="about_section layout_padding">
+    <div class="container  ">
+      <div class="row">
+        <div class="col-md-6 ">
+          <div class="img-box">
+            <img src="{% static 'images/about-img.jpg' %}" alt="">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-box">
+            <div class="heading_container">
+              <h2>
+                About <span>Hospital</span>
+              </h2>
+            </div>
+            <p>
+              About Mico Hospital
+
+Welcome to Mico Hospital, where your health and well-being are our top priorities. Located in the heart of city, we have been serving our community with dedication and excellence for over [number] years.
+
+Our History
+Founded in 1998, Mico Hospital has grown from a small clinic into a comprehensive medical center. Our commitment to providing high-quality healthcare has driven our continuous expansion and innovation in medical services and facilities.
+
+Our Mission
+At Mico Hospital, our mission is to enhance the health and quality of life of the individuals and communities we serve. We strive to deliver compassionate, patient-centered care, utilizing the latest medical advancements and technology.
+
+Our Vision
+We envision a healthier community where every individual has access to excellent healthcare services. Our goal is to be the leading healthcare provider in the region, known for our patient care, advanced medical treatments, and outstanding healthcare professionals.
+            </p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end about section -->
+
+
+  <!-- info section -->
+  {% endblock %}

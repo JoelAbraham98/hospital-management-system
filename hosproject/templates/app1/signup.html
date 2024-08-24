@@ -1,0 +1,31 @@
+{% extends 'app1/base.html' %}
+{% load static %}
+
+  {% block content %}
+  <section class="about_section layout_padding" style="background-color: white;">
+    <div class="container" >
+      <div class="row">
+  <div class="col-md-6">
+    <div class="mail_section" >
+       <form action="" method="post" >
+          {% if msg %}
+          <div class="alert-success">
+             {{msg}}
+          </div>
+          {% endif %}
+          {% csrf_token %}
+          <div class="mb-3">
+              {{ form }}
+          </div>
+  
+         
+        <button style="margin-bottom: 2%;" type="submit" class="btn btn-primary">Sign up</button>
+
+        
+        
+      </form>
+  </div>
+  </div>
+      </div></div >
+  
+  {% endblock %}

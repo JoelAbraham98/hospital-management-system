@@ -1,0 +1,45 @@
+{% extends 'app1/base.html' %}
+{% block content %}
+
+<div class="container mt-5">
+    <h2 class="mb-4">Your Appointments</h2>
+
+    {% if appointments %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Doctor</th>
+                <th>Appointment Time</th>
+                <th>Patient Name</th>
+                <th>Gender</th>
+                <th>Phone Number</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for appointment in appointments|dictsortreversed:"appointment_time" %}
+            <tr>
+                <td>Dr. {{ appointment.doctor.first_name }} {{ appointment.doctor.last_name }}</td>
+                <td>{{ appointment.appointment_time|date:"F d, Y, h:i A" }}</td>
+                <td>{{ appointment.patient.first_name }} {{ appointment.patient.last_name }}</td>
+                <td>{{ appointment.patient.get_gender_display }}</td>
+                <td>{{ appointment.patient.phone_number }}</td>
+                <td>
+                    {% if appointment.description_file %}
+                    <a href="{{ appointment.description_file.url }}" download>Download Description</a>
+                    {% elif appointment.description %}
+                    {{ appointment.description }}
+                    {% else %}
+                    No description available
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>You have no appointments scheduled.</p>
+    {% endif %}
+</div>
+
+{% endblock %}

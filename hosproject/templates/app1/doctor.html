@@ -1,0 +1,47 @@
+{% extends 'app1/base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="team_section layout_padding">
+  <div class="container">
+    <div class="heading_container heading_center">
+      {% if datas %}
+        <h2>Our Doctors</h2>
+      {% endif %}
+    </div>
+
+    <div class="carousel-wrap">
+      <div class="owl-carousel team_carousel">
+        {% for doc in datas %}
+          <div class="item">
+            <div class="box">
+              <div class="img-box">
+                {% if doc.profile_picture %}
+                  <img src="{{ doc.profile_picture.url }}" alt="Profile Picture" style="width: 350px; height: 350px;">
+                {% else %}
+                  <img src="{% static 'images/team1.jpg' %}" alt="Default Team Image" style="width: 100px; height: 100px;">
+                {% endif %}
+              </div>
+              <div class="detail-box">
+                <h5>{{ doc.first_name }} {{ doc.last_name }}</h5>
+                <h6>{{ doc.specialty }}</h6>
+                <p>Phone: {{ doc.phone_number }}</p>
+                {% if request.session.username %}
+                  <a href="{% url 'make_appointment' doctor_id=doc.id %}" class="btn btn-primary">Make an Appointment</a>
+                {% else %}
+                  <a href="{% url 'login' %}" class="btn btn-primary">Make an Appointment</a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+
+
+
